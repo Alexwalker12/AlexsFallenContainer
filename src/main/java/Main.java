@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.function.IntUnaryOperator;
 
 public class Main {
 
@@ -33,13 +32,15 @@ public class Main {
         Properties prop = new Properties();
         InputStream inputProp = null;
 
+        accessToken = prop.getProperty("accessToken");
+        clientIdentifier = prop.getProperty("clientIdentifier");
+        userLocal = prop.getProperty("userLocale");
+
+        //Method One
+
         try {
             inputProp = new FileInputStream(credentialsFilePath);
             prop.load(inputProp);
-
-            accessToken = prop.getProperty("accessToken");
-            clientIdentifier = prop.getProperty("clientIdentifier");
-            userLocal = prop.getProperty("userLocale");
 
         } catch (IOException ex) {
             ex.printStackTrace();
