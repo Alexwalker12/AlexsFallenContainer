@@ -12,15 +12,15 @@ import java.util.Properties;
 
 public class artifactUploader {
 
-    private static String accessToken;
-    private static String clientIdentifier;
-    private static String userLocal;
+    private String accessToken;
+    private String clientIdentifier;
+    private String userLocal;
 
     private static Properties prop = new Properties();
     private static InputStream inputProp = null;
-    
 
-    public static void main(String[] args) throws DbxException {
+
+    public void main(String[] args) throws DbxException {
 
         if (args.length != 3) {
             System.out.println("Missing Arguments: input path of file to upload, and path to key.");
@@ -41,10 +41,11 @@ public class artifactUploader {
             System.out.println("One of the properties is null.");
             return;
         }
+
         uploadFile(filePath, dropboxFilePath);
     }
 
-    private static void uploadFile(String filePath, String dropboxFilePath) {
+    public void uploadFile(String filePath, String dropboxFilePath) {
 
         DbxRequestConfig config = new DbxRequestConfig(clientIdentifier, userLocal);
         DbxClientV2 client = new DbxClientV2(config, accessToken);
@@ -79,14 +80,26 @@ public class artifactUploader {
         }
     }
 
-    private static void getCredentials(String credentialsFilePath) {
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public String getClientIdentifier() {
+        return clientIdentifier;
+    }
+
+    public String getUserLocal() {
+        return userLocal;
+    }
+
+    public void getCredentials(String credentialsFilePath) {
         try {
             inputProp = new FileInputStream(credentialsFilePath);
             prop.load(inputProp);
 
             accessToken = prop.getProperty("accessToken");
             clientIdentifier = prop.getProperty("clientIdentifier");
-            userLocal = prop.getProperty("userLocal");
+            userLocal = prop.getProperty("userLocale");
 
         } catch (IOException ex) {
             ex.printStackTrace();
