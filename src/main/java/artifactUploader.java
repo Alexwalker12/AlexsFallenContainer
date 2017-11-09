@@ -19,8 +19,13 @@ public class artifactUploader {
     private static Properties prop = new Properties();
     private static InputStream inputProp = null;
 
+    public static void main(String[] args) throws DbxException {
+        artifactUploader artifact = new artifactUploader();
+        artifact.go(args);
+    }
 
-    public void main(String[] args) throws DbxException {
+
+    public void go(String[] args) throws DbxException {
 
         if (args.length != 3) {
             System.out.println("Missing Arguments: input path of file to upload, and path to key.");
@@ -43,6 +48,7 @@ public class artifactUploader {
         }
 
         uploadFile(filePath, dropboxFilePath);
+
     }
 
     public void uploadFile(String filePath, String dropboxFilePath) {
@@ -80,18 +86,6 @@ public class artifactUploader {
         }
     }
 
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public String getClientIdentifier() {
-        return clientIdentifier;
-    }
-
-    public String getUserLocal() {
-        return userLocal;
-    }
-
     public void getCredentials(String credentialsFilePath) {
         try {
             inputProp = new FileInputStream(credentialsFilePath);
@@ -103,7 +97,6 @@ public class artifactUploader {
 
         } catch (IOException ex) {
             ex.printStackTrace();
-            return;
         } finally {
             if (inputProp != null) {
                 try {
@@ -113,5 +106,17 @@ public class artifactUploader {
                 }
             }
         }
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public String getClientIdentifier() {
+        return clientIdentifier;
+    }
+
+    public String getUserLocal() {
+        return userLocal;
     }
 }
