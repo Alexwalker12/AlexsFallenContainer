@@ -19,28 +19,39 @@ public class artifactUploader {
     private static Properties prop = new Properties();
     private static InputStream inputProp = null;
 
+    private String filePath;
+    private String dropboxFilePath;
+    private String credentialsFilePath;
+
+    private String shareUrl;
+
     public static void main(String[] args) throws DbxException {
         artifactUploader artifact = new artifactUploader();
+        if (args.length != 3) {
+            System.out.println("Missing Arguments: input path of file to upload, and path to key.");
+            return;
+        }
         artifact.go(args);
     }
 
 
     public void go(String[] args) throws DbxException {
 
-        if (args.length != 3) {
-            System.out.println("Missing Arguments: input path of file to upload, and path to key.");
-            return;
-        }
+        System.out.println(accessToken);
 
-        String filePath = args[0];
-        String dropboxFilePath = args[1];
-        String credentialsFilePath = args[2];
+        filePath = args[0];
+        dropboxFilePath = args[1];
+        credentialsFilePath = args[2];
 
         getCredentials(credentialsFilePath);
 
         accessToken = prop.getProperty("accessToken");
         clientIdentifier = prop.getProperty("clientIdentifier");
         userLocal = prop.getProperty("userLocale");
+
+        System.out.println(accessToken);
+        System.out.println(clientIdentifier);
+        System.out.println(userLocal);
 
         if (accessToken == null || clientIdentifier == null || userLocal == null) {
             System.out.println("One of the properties is null.");
@@ -54,6 +65,8 @@ public class artifactUploader {
     public void uploadFile(String filePath, String dropboxFilePath) {
 
         DbxRequestConfig config = new DbxRequestConfig(clientIdentifier, userLocal);
+
+        System.out.println(clientIdentifier);
         DbxClientV2 client = new DbxClientV2(config, accessToken);
 
         try (InputStream in = new FileInputStream(filePath)) {
@@ -70,7 +83,9 @@ public class artifactUploader {
                                 .withPath(metaDataPath).withDirectOnly(true).start();
                         for (SharedLinkMetadata linkMetaData : result.getLinks()) {
 
-                            System.out.println(linkMetaData.getUrl());
+                            shareUrl = linkMetaData.getUrl();
+
+                            System.out.println(shareUrl);
                         }
                     } catch (Exception ex1) {
                         ex1.printStackTrace();
@@ -118,5 +133,17 @@ public class artifactUploader {
 
     public String getUserLocal() {
         return userLocal;
+    }
+    public String getFilePath() {
+        return filePath;
+    }
+    public String getDropboxFilePath() {
+        return dropboxFilePath;
+    }
+    public String getCredentialsFilePath() {
+        return credentialsFilePath;
+    }
+    public String getShareUrl() {
+        return shareUrl;
     }
 }
