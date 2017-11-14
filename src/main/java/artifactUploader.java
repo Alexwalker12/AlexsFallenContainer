@@ -49,9 +49,6 @@ public class artifactUploader {
         clientIdentifier = prop.getProperty("clientIdentifier");
         userLocal = prop.getProperty("userLocale");
 
-        System.out.println(accessToken);
-        System.out.println(clientIdentifier);
-        System.out.println(userLocal);
 
         if (accessToken == null || clientIdentifier == null || userLocal == null) {
             System.out.println("One of the properties is null.");
@@ -66,7 +63,6 @@ public class artifactUploader {
 
         DbxRequestConfig config = new DbxRequestConfig(clientIdentifier, userLocal);
 
-        System.out.println(clientIdentifier);
         DbxClientV2 client = new DbxClientV2(config, accessToken);
 
         try (InputStream in = new FileInputStream(filePath)) {
@@ -126,11 +122,9 @@ public class artifactUploader {
     public String getAccessToken() {
         return accessToken;
     }
-
     public String getClientIdentifier() {
         return clientIdentifier;
     }
-
     public String getUserLocal() {
         return userLocal;
     }
