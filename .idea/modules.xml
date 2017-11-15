@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dropbox-core-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/dropbox-core-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dropbox-core-sdk_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dropbox-core-sdk_main.iml" group="dropbox-core-sdk" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dropbox-core-sdk_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dropbox-core-sdk_test.iml" group="dropbox-core-sdk" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader_main.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader_main.iml" group="dropbox-core-sdk" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader_test.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartDriveArtifactUploader_test.iml" group="dropbox-core-sdk" />
     </modules>
   </component>
 </project>

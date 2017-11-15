@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SmartDriveArtifactUploader:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SmartDriveArtifactUploader_jar</output-path>
+    <root id="archive" name="SmartDriveArtifactUploader.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="SmartDriveArtifactUploader_main" />
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.7.4" />
+        <element id="library" level="project" name="Gradle: com.dropbox.core:dropbox-core-sdk:3.0.5" />
+        <element id="library" level="project" name="Gradle: junit:junit:4.12" />
+        <element id="library" level="project" name="Gradle: org.hamcrest:hamcrest-core:1.3" />
+        <element id="library" level="application" name="groovy-2.4.12" />
+      </element>
+    </root>
+  </artifact>
+</component>

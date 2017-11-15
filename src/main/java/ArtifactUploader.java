@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class artifactUploader {
+public class ArtifactUploader {
 
     private String accessToken;
     private String clientIdentifier;
@@ -26,7 +26,7 @@ public class artifactUploader {
     private String shareUrl;
 
     public static void main(String[] args) throws DbxException {
-        artifactUploader artifact = new artifactUploader();
+        ArtifactUploader artifact = new ArtifactUploader();
         if (args.length != 3) {
             System.out.println("Missing Arguments: input path of file to upload, and path to key.");
             return;
@@ -36,9 +36,7 @@ public class artifactUploader {
 
 
     public void go(String[] args) throws DbxException {
-
-        System.out.println(accessToken);
-
+        
         filePath = args[0];
         dropboxFilePath = args[1];
         credentialsFilePath = args[2];
